@@ -43,15 +43,19 @@ The major ideas about design of Howdy server includes:
 The flowchart of original listening thread and threads created for new client connection is shown as below. When the server is started, there will be a command line prompt asking for IP address and port number to run the HCP service. The Howdy server will use them to start a new socket and listen for new clients. When a client connects server, a new thread will be created to handle this client connection, and the server socket will keep listening for next client. For the new thread of client connection, it will check the connectivity of client socket. If connectivity is lost, it will refresh user list, inform all remaining clients and close socket. Otherwise it will check message received, see if the message is type 1 or 5, BTW server will discard messages other than type 1 or 5 silently. For message type 1, server will fetch username and check its availability and inform users. For message type 5, server will forward the message to proper destination.
 
 Socket Flowchart:
+
 ![serverflowchartsocket](/img/serverflowchartsocket.png)
 
 Message Processing Flowchart:
+
 ![serverflowchartmessage](/img/serverflowchartmessage.png)
 
 Server CLI:
+
 ![serverlogin](/img/serverlogin.png)
 
 Server Log:
+
 ![serveroutput](/img/serveroutput.png)
 
 ## HCP Client
@@ -63,18 +67,22 @@ The major ideas about design of Howdy client includes:
 The flowchart on Howdy Client application is shown as below. There are two flowcharts for sending and receiving thread. Packet sending share a thread with GUI, and it get message from GUI. First of all, it has to get IP address and port number from user input, and will not proceed until it connects the Howdy Server successfully. The next step is to provide a valid username to negotiate with server, and no message can be sent or received until the username is set. Message to be sent will also be checked and it will not be sent until it is valid. For receiving thread, it will check the connectivity of sock first, and will close the socket if it is not available anymore. Then it will check the message type, it can only take message type 2, 3, 4 and 5. Howdy Client will ignore message type 1 and discard unrecognized packets silently. If it received a message type 2, it will update its own username; if it receives a message type 3, it will inform user to pick a new name; if it receives a message type 4, it will update local user list and compare it with older one to find who went online or offline.
 
 Socket Flowchart:
+
 ![clientflowchart](/img/clientflowchart.png)
 
 Message Processing Flowchart:
+
 ![clientflowchartmessage](/img/clientflowchartmessage.png)
 
 Client GUI:
+
 ![clientUI](/img/clientUI.png)
 
 ## Test
 
 
 System test is running on a remote Server, the environment is shown as below.
+
 ![testenv](/img/testenv.png)
 
 4 Windows 7 guest machines are created on ESXi bare-mental host, and each of them are allocated with 2 CPUs and 4G memory. The management of virtual machines is based on vSphere Client and Remote Desktops.
