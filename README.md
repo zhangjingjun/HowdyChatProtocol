@@ -83,8 +83,6 @@ Client GUI:
 
 System test is running on a remote Server, the environment is shown as below.
 
-![testenv](/img/testenv.png)
-
 4 Windows 7 guest machines are created on ESXi bare-mental host, and each of them are allocated with 2 CPUs and 4G memory. The management of virtual machines is based on vSphere Client and Remote Desktops.
 Win71 is running as server and the rest of them is running as clients.
 
@@ -104,3 +102,7 @@ to be connected.
 12. Clients must be able to disconnect without disrupting the server.
 
 The detailed test result is included in project documentation.
+
+
+![testenv](/img/testenv.png)
+
