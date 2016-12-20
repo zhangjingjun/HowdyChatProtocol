@@ -1,4 +1,4 @@
-# HowdyChatProtocol
+# Howdy Chat Protocol
 
 Howdy Chat Protocol is a simple application layer protocol running on TCP port number 20002, designed by Jingjun Zhang, to achieve basic information exchange between users who want to chat with each other online. Howdy Server and Howdy Client are developed on Python 3.5.2 platform as the implementation of Howdy Chat Protocol. The application is based on the following undelying technologies:
 
